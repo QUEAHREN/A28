@@ -5,6 +5,7 @@ import cv2
 import torch
 from torchvision import transforms
 import matplotlib.pyplot as plt
+from PIL import Image
 
 from model import resnet34
 
@@ -22,7 +23,7 @@ def predict(img):
     # load image
 
     #     img = cv2.imread(img_path, cv2.IMREAD_COLOR)
-    plt.imshow(img)
+    # plt.imshow(img)
     #     print(len(img.split())
 
     # [N, C, H, W]
@@ -55,11 +56,11 @@ def predict(img):
 
     print_res = "class: {}   prob: {:.3}".format(class_indict[str(predict_cla)],
                                                  predict[predict_cla].numpy())
-    print(print_res)
-    plt.title(print_res)
+    # print(print_res)
+    # plt.title(print_res)
     # for i in range(len(predict)):
     #     print("class: {:10}   prob: {:.3}".format(class_indict[str(i)],
     #                                               predict[i].numpy()))
-    plt.show()
+    # plt.show()
 
-    return class_indict[str(predict_cla)], predict[predict_cla].numpy()
+    return int(class_indict[str(predict_cla)]), predict[predict_cla].numpy()
